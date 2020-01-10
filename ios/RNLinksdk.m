@@ -185,6 +185,10 @@ RCT_EXPORT_METHOD(create:(NSDictionary*)configuration) {
         self.linkViewController = [[PLKPlaidLinkViewController alloc] initWithConfiguration:linkConfiguration
                                                                               delegate:self.linkViewDelegate];
     }
+
+    if (@available(iOS 13.0, *)) {
+        self.linkViewController.modalInPresentation = YES;
+    }
 }
 
 RCT_EXPORT_METHOD(open:(RCTResponseSenderBlock)callback) {
