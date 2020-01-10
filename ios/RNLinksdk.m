@@ -201,6 +201,9 @@ RCT_EXPORT_METHOD(open:(RCTResponseSenderBlock)callback) {
 }
 
 - (void)dismissLinkViewController {
+    if (@available(iOS 13.0, *)) {
+        self.linkViewController.modalInPresentation = NO;
+    }
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     self.presentingViewController = nil;
     self.linkViewController = nil;
